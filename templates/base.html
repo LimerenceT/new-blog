@@ -22,7 +22,8 @@
     <link rel="stylesheet" href="{% static 'blog/css/default.css' %}">
 	<link rel="stylesheet" href="{% static 'blog/css/layout.css' %}">
 	<link rel="stylesheet" href="{% static 'blog/css/media-queries.css'%}">
-    <link rel="stylesheet" href="{% static 'blog/css/highlights/github.css' %}">
+{#    <link rel="stylesheet" href="http://picturebag.qiniudn.com/github.css">#}
+    <link rel="stylesheet" href="{% static 'blog/css/pygments.css' %}">
 
    <!-- Script
    ================================================== -->
@@ -44,8 +45,8 @@
 
    		<div class="header-content twelve columns">
 
-		      <h1 id="logo-text"><a href="{% url 'blog:index' %}" title="">Keep It Simple.</a></h1>
-				<p id="intro">Put your awesome slogan here...</p>
+		      <h1 id="logo-text"><a href="{% url 'blog:index' %}" title="">Limerence. </a></h1>
+				<p id="intro"></p>
 
 			</div>			
 
@@ -96,19 +97,19 @@
                   </form>
                </div>
 
-   			<div class="widget widget_categories group">
-   				<h3>Categories.</h3> 
-   				<ul>
-                    {% category_tag as category_list %}
-                    {% for category in category_list %}
-                        {% category_tag category as category_num %}
-                        <li><a href="{% url 'blog:category' category %}" title="">{{ category }}</a> ({{ category_num }})</li>
-                    {% endfor %}
-
-
-
-					</ul>
-				</div>
+{#   			<div class="widget widget_categories group">#}
+{#   				<h3>Categories.</h3> #}
+{#   				<ul>#}
+{#                    {% category_tag as category_list %}#}
+{#                    {% for category in category_list %}#}
+{#                        {% category_tag category as category_num %}#}
+{#                        <li><a href="{% url 'blog:category' category %}" title="">{{ category }}</a> ({{ category_num }})</li>#}
+{#                    {% endfor %}#}
+{##}
+{##}
+{##}
+{#					</ul>#}
+{#				</div>#}
 
 {#				<div class="widget widget_text group">#}
 {#					<h3>Widget Text.</h3>#}
@@ -117,17 +118,31 @@
 {##}
 {#   			</div>#}
 
-   			<div class="widget widget_tags">
+{#   			<div class="widget widget_tags">#}
+{#               <h3>Post Tags.</h3>#}
+{##}
+{#               <div class="tagcloud group">#}
+{#                   {% tags_tag as tag_list %}#}
+{#                   {% for tag in tag_list %}#}
+{#                   <a href="{% url 'blog:tag' tag %}  ">{{ tag }}</a>#}
+{#                   {% endfor %}#}
+{##}
+{#               </div>#}
+{#                  #}
+{#            </div>#}
+        <div class="widget widget_tags">
                <h3>Post Tags.</h3>
 
                <div class="tagcloud group">
-                   {% tags_tag as tag_list %}
-                   {% for tag in tag_list %}
-                   <a href="{% url 'blog:tag' tag %}  ">{{ tag }}</a>
+                   {% category_tag as category_list %}
+                    {% for category in category_list %}
+                        {% category_tag category as category_num %}
+                        <a href="{% url 'blog:category' category %}" >{{ category }}</a>
+
                    {% endfor %}
 
                </div>
-                  
+
             </div>
 
             <div class="widget widget_popular">
@@ -162,7 +177,7 @@
                <li><a href="#"><i class="fa fa-weibo"></i></a></li>
                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-               <li><a href="#"><i class="fa fa-github-square"></i></a></li>
+               <li><a href="https://github.com/LimerenceT"><i class="fa fa-github-square"></i></a></li>
                <li><a href="#"><i class="fa fa-instagram"></i></a></li>
                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                <li><a href="#"><i class="fa fa-skype"></i></a></li>

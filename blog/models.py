@@ -36,7 +36,7 @@ class Post(models.Model):
 
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
 
-    tags = models.ForeignKey(Tag, on_delete=models.CASCADE)
+    # tags = models.ForeignKey(Tag, )
     #使用django.contrib.auth.models中定义的User
     author = models.ForeignKey(User, on_delete=models.CASCADE)
 

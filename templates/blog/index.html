@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load markdown_deux_tags %}
     {% block nav %}
                     <li class="current"><a href="{% url 'blog:index' %}">Home</a></li>
 	                <li><a href="{% url 'blog:archives' %}">Archives</a></li>
@@ -19,16 +20,22 @@
 								<li>{{ post.created_time }}</li>
 								<span class="meta-sep">&bull;</span>
 								<li><a href="#" title="" rel="category tag">{{ post.category }}</a></li>
-								<span class="meta-sep">&bull;</span>
-								<li>{{ post.author }}</li>
+{#
 							</ul>
 						</div>
 
 					</header>
-
-					<div class="entry-content">
+                    {% if post.pk < 13%}
+                    <div class="entry-content">
 						<p>{{ post.body|truncatechars:122|safe }}</p>
 					</div>
+                        {% else %}
+                        <div class="entry-content">
+						<p>{{ post.body|markdown|truncatechars:122 }}</p>
+					</div>
+                    {% endif %}
+
+
 
 				</article> <!-- end entry -->
         {% endfor %}

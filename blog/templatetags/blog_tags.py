@@ -26,3 +26,23 @@ def popular_post_tag():
 @register.simple_tag
 def archives_by_month():
     return Post.objects.dates('created_time', 'month', order='DESC')
+
+
+@register.simple_tag
+def pre_post(pk):
+    if Post.objects.filter(pk=pk+1):
+        return Post.objects.filter(pk=pk+1)[0]
+    elif Post.objects.filter(pk=pk+2):
+        return Post.objects.filter(pk=pk+2)[0]
+    else:
+        return None
+
+
+@register.simple_tag
+def next_post(pk):
+    if Post.objects.filter(pk=pk-1):
+        return Post.objects.filter(pk=pk-1)[0]
+    elif Post.objects.filter(pk=pk-2):
+        return Post.objects.filter(pk=pk-2)[0]
+    else:
+        return None

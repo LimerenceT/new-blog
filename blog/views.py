@@ -1,8 +1,7 @@
-from django.shortcuts import render
 from .models import Post
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from django.views.generic import ListView
-import markdown
+from django.core.paginator import Paginator
+import markdown2
+from django.shortcuts import render, get_object_or_404
 
 
 # Create your views here.
@@ -17,13 +16,8 @@ def index(request):
 
 
 def detail(request, pk):
-    post = Post.objects.get(pk=pk)
-    post.body = markdown.markdown(post.body,
-                                  extensions=[
-                                      'markdown.extensions.extra',
-                                      'markdown.extensions.codehilite',
-                                      'markdown.extensions.toc',
-                                  ])
+    post = get_object_or_404(Post, pk=pk)
+    post.body = markdown2.markdown(post.body, extras=["fenced-code-blocks"])
     context = {'post': post}
     post.one_view()
     return render(request, 'blog/single.html', context)

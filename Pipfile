@@ -8,8 +8,10 @@ name = "pypi"
 [packages]
 
 markdown = "*"
-django = "*"
 pygments = "*"
+django-admin-bootstrapped = "*"
+django = "*"
+django-markdown-deux = "*"
 
 
 [dev-packages]
