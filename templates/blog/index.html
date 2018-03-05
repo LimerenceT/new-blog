@@ -1,4 +1,9 @@
 {% extends 'base.html' %}
+    {% block nav %}
+                    <li class="current"><a href="{% url 'blog:index' %}">Home</a></li>
+	                <li><a href="{% url 'blog:archives' %}">Archives</a></li>
+                    <li><a href="">Page</a></li>
+    {% endblock %}
     {% block main %}
         {% for post in post_list %}
         <article class="entry">
@@ -13,7 +18,7 @@
 							<ul>
 								<li>{{ post.created_time }}</li>
 								<span class="meta-sep">&bull;</span>
-								<li><a href="#" title="" rel="category tag">{{ post.tags }}</a></li>
+								<li><a href="#" title="" rel="category tag">{{ post.category }}</a></li>
 								<span class="meta-sep">&bull;</span>
 								<li>{{ post.author }}</li>
 							</ul>
@@ -22,21 +27,20 @@
 					</header>
 
 					<div class="entry-content">
-						<p>{{ post.body }}</p>
+						<p>{{ post.body|truncatechars:122|safe }}</p>
 					</div>
 
 				</article> <!-- end entry -->
         {% endfor %}
-    <div style="width: 30%;margin-left: auto;margin-right: auto">
+    <div style="width: 100%;margin-left: auto;margin-right: auto">
 
         <div class="col-xs-6">
                 {% if post_list.has_previous %}
-                    <a href="?page={{ post_list.previous_page_number }}">&laquo;&laquo;</a>
+                    <a href="?page={{ post_list.previous_page_number }}">&laquo;Older</a>
                 {% endif %}
 
-
                 {% if post_list.has_next %}
-                    <a style="float: right" href="?page={{ post_list.next_page_number }}">&raquo;&raquo;</a>
+                    <a style="float: right" href="?page={{ post_list.next_page_number }}">More&raquo;</a>
                 {% endif %}
 
         </div>

@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="{% static 'blog/css/default.css' %}">
 	<link rel="stylesheet" href="{% static 'blog/css/layout.css' %}">
 	<link rel="stylesheet" href="{% static 'blog/css/media-queries.css'%}">
+    <link rel="stylesheet" href="{% static 'blog/css/highlights/github.css' %}">
 
    <!-- Script
    ================================================== -->
@@ -55,22 +56,16 @@
 	   	<a class="mobile-btn" href="#nav-wrap" title="Show navigation">Show Menu</a>
 		   <a class="mobile-btn" href="#" title="Hide navigation">Hide Menu</a>
 
-	   	<div class="row">    		            
+	   	<div class="row">
 
 			   	<ul id="nav" class="nav">
-			      	<li class="current"><a href="{% url 'blog:index' %}">Home</a></li>
-	               <li><a href="demo.html">Demo</a></li>	
-	               <li><a href="{% url 'blog:archives' %}">Archives</a></li>
-			      	<li class="has-children"><a href="single.html">Blog</a>
-							<ul>
-	                     <li><a href="index.html">Blog Entries</a></li>
-	                     <li><a href="single.html">Single Blog</a></li>	                     
-	                  </ul>
-			      	</li>		      	
-			      	<li><a href="page.html">Page</a></li>
-			   	</ul> <!-- end #nav -->			   	 
+			      	{% block nav %}
 
-	   	</div> 
+                    {% endblock %}
+			   	</ul> <!-- end #nav -->
+
+	   	</div>
+
 
 	   </nav> <!-- end #nav-wrap --> 	     
 
@@ -174,7 +169,8 @@
             </ul>			
       	</div>
 
-         <p class="copyright">&copy; Copyright 2017 by ql. Powered by Django.</p>
+         <p class="copyright">&copy; Copyright 2017 by ql.&nbsp; &nbsp; Powered by Django.</p>
+
 
       </div> <!-- End row -->
 

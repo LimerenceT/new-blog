@@ -1,6 +1,9 @@
 from django.shortcuts import render
 from .models import Post
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.views.generic import ListView
+import markdown
+
 
 # Create your views here.
 def index(request):
@@ -12,28 +15,56 @@ def index(request):
     # context = {'post_list': post_list, }
     # return render(request, 'blog/index.html', context)
 
-def detail(request,pk):
+
+def detail(request, pk):
     post = Post.objects.get(pk=pk)
+    post.body = markdown.markdown(post.body,
+                                  extensions=[
+                                      'markdown.extensions.extra',
+                                      'markdown.extensions.codehilite',
+                                      'markdown.extensions.toc',
+                                  ])
     context = {'post': post}
     post.view += 1
     post.save()
     return render(request, 'blog/single.html', context)
 
+
 def archives(request):
-    # post_list = Post.objects.filter(created_time__year=year,created_time__month=month)
-    # context = {'post':post_list}
     return render(request, 'blog/archives.html', None)
 
-def tag(request,tags):
+
+def tag(request, tags):
     post_list = Post.objects.all().filter(tags__name=tags).order_by('-created_time')
-    paginator = Paginator(post_list, 2)
+    paginator = Paginator(post_list, 3)
     page = request.GET.get('page')
     every_page_list = paginator.get_page(page)
     return render(request, 'blog/index.html', {'post_list': every_page_list})
 
-def category(request,category):
+
+def category(request, category):
     post_list = Post.objects.all().filter(category__name=category).order_by('-created_time')
-    paginator = Paginator(post_list, 2)
+    paginator = Paginator(post_list, 3)
     page = request.GET.get('page')
     every_page_list = paginator.get_page(page)
     return render(request, 'blog/index.html', {'post_list': every_page_list})
+
+
+def month_list(request, year, month):
+
+    post_list = Post.objects.filter(created_time__startswith=str(year)+'-'+month).order_by('-created_time')
+    paginator = Paginator(post_list, 3)
+    page = request.GET.get('page')
+    every_page_list = paginator.get_page(page)
+    return render(request, 'blog/index.html', {'post_list': every_page_list})
+
+
+# class Archives(ListView):
+#     model = Post
+#     template_name = 'blog/index.html'
+#     context_object_name = 'post_list'
+#
+#     def get_queryset(self):
+#         year = self.kwargs.get('year')
+#         month = self.kwargs.get('month')
+#         return super(Archives, self).get_queryset().filter(created_time__year=year, created_time__month=month)
