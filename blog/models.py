@@ -40,4 +40,8 @@ class Post(models.Model):
     #使用django.contrib.auth.models中定义的User
     author = models.ForeignKey(User, on_delete=models.CASCADE)
 
-    view = models.IntegerField(default=0)
+    views = models.PositiveIntegerField(default=0)
+
+    def one_view(self):
+        self.views += 1
+        self.save(update_fields=['views'])

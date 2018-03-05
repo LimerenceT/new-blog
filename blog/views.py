@@ -25,8 +25,7 @@ def detail(request, pk):
                                       'markdown.extensions.toc',
                                   ])
     context = {'post': post}
-    post.view += 1
-    post.save()
+    post.one_view()
     return render(request, 'blog/single.html', context)
 
 

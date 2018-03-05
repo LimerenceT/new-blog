@@ -20,7 +20,7 @@ def tags_tag():
 
 @register.simple_tag
 def popular_post_tag():
-    return Post.objects.all().order_by('-view')[:3]
+    return Post.objects.all().order_by('-views')[:3]
 
 
 @register.simple_tag
