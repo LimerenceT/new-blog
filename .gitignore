@@ -60,3 +60,7 @@ target/
 *.xml
 
 \.idea/
+
+\.env
+
+db\.sqlite3

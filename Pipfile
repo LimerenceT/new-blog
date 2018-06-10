@@ -1,18 +1,14 @@
 [[source]]
-
 url = "https://pypi.python.org/simple"
 verify_ssl = true
 name = "pypi"
 
-
 [packages]
-
 markdown = "*"
 pygments = "*"
-django-admin-bootstrapped = "*"
-django = "*"
+django = "==2.1a1"
 django-markdown-deux = "*"
-
+"6210100" = {file = "https://github.com/darklow/django-suit/tarball/v2"}
+"053cb69" = {file = "https://github.com/LimerenceT/django-mdeditor/tarball/master"}
 
 [dev-packages]
-

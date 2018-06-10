@@ -1,20 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "32535b822d8713bad49d5cc56e8f2bcf60dfe3d2f4437d4ba666c45ab2bbc633"
-        },
-        "host-environment-markers": {
-            "implementation_name": "cpython",
-            "implementation_version": "3.6.1",
-            "os_name": "posix",
-            "platform_machine": "x86_64",
-            "platform_python_implementation": "CPython",
-            "platform_release": "16.7.0",
-            "platform_system": "Darwin",
-            "platform_version": "Darwin Kernel Version 16.7.0: Thu Jan 11 22:59:40 PST 2018; root:xnu-3789.73.8~1/RELEASE_X86_64",
-            "python_full_version": "3.6.1",
-            "python_version": "3.6",
-            "sys_platform": "darwin"
+            "sha256": "20725b6cbd7a088f16074ad741a1ac10d4668e6c3c96522fca1d5ceb1d7dbba4"
         },
         "pipfile-spec": 6,
         "requires": {},
@@ -27,23 +14,24 @@
         ]
     },
     "default": {
+        "053cb69": {
+            "file": "https://github.com/LimerenceT/django-mdeditor/tarball/master"
+        },
+        "6210100": {
+            "file": "https://github.com/darklow/django-suit/tarball/v2"
+        },
         "django": {
             "hashes": [
-                "sha256:d8e2fd119756ab10b43a31052c3c8efbc262064b81eecb7871372de4d37b1a94",
-                "sha256:c7611cdd5e2539a443b7960c7cafd867d986c2720a1b44808deaa60ce3da50c7"
+                "sha256:89ac9fce84db947da7e5d1e7a24eabd21216c04cc4386c93197f0aa2487e9945"
             ],
-            "version": "==1.8.18"
-        },
-        "django-admin-bootstrapped": {
-            "hashes": [
-                "sha256:54927a8b55f61d3b90b4ecb7527ca75d9d8f621f604d2c92fcc7a751f7ea099d"
-            ],
-            "version": "==2.5.7"
+            "index": "pypi",
+            "version": "==2.1a1"
         },
         "django-markdown-deux": {
             "hashes": [
                 "sha256:5b4a3cd9454af5b4cec0e19151b41d98d09400ddae0688afb81dbf62a4edafff"
             ],
+            "index": "pypi",
             "version": "==1.0.5"
         },
         "markdown": {
@@ -51,6 +39,7 @@
                 "sha256:9ba587db9daee7ec761cfc656272be6aabe2ed300fece21208e4aab2e457bc8f",
                 "sha256:a856869c7ff079ad84a3e19cd87a64998350c2b94e9e08e44270faef33400f81"
             ],
+            "index": "pypi",
             "version": "==2.6.11"
         },
         "markdown2": {
@@ -64,7 +53,15 @@
                 "sha256:78f3f434bcc5d6ee09020f92ba487f95ba50f1e3ef83ae96b9d5ffa1bab25c5d",
                 "sha256:dbae1046def0efb574852fab9e90209b23f556367b5a320c0bcb871c77c3e8cc"
             ],
+            "index": "pypi",
             "version": "==2.2.0"
+        },
+        "pytz": {
+            "hashes": [
+                "sha256:65ae0c8101309c45772196b21b74c46b2e5d11b6275c45d251b150d5da334555",
+                "sha256:c06425302f2cf668f1bba7a0a03f3c1d34d4ebeef2c72003da308b3947c7f749"
+            ],
+            "version": "==2018.4"
         }
     },
     "develop": {}

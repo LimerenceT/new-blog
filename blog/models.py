@@ -1,9 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.utils import timezone
 
 
 # Create your models here.
+from mdeditor.fields import MDTextField
 
 
 class Category(models.Model):
@@ -26,7 +26,7 @@ class Post(models.Model):
 
     title = models.CharField(max_length=70)
 
-    body = models.TextField()
+    body = MDTextField()
 
     created_time = models.DateTimeField(auto_now_add=True)
     modified_time = models.DateTimeField(auto_now_add=True)
